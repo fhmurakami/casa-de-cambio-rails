@@ -1,8 +1,12 @@
 class Transaction < ApplicationRecord
+  validates :amount, :currency, :quotation,
+            :transaction_type, presence: true
+
   def translate(word)
     return 'Dólar' if word == 'dollar'
     return 'Real' if word == 'real'
     return 'Venda' if word == 'sell'
+
     'Compra'
   end
 

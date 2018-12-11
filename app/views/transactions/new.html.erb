@@ -1,0 +1,12 @@
+<%= form_for Transaction.new do |f| %>
+  <%= f.label :amount, 'Quantidade' %>
+  <%= f.text_field :amount %>
+  <%= f.label :currency, 'Moeda' %>
+  <%= f.select :currency, [['Dólar', 'dollar'], ['Real', 'real']] %>
+  <%= f.label :quotation, 'Cotação' %>
+  <%= f.text_field :quotation %>
+  <%= f.label :transaction_type, 'Tipo' %>
+  <%= f.select :transaction_type, [['Venda', 'sell'],['Compra', 'buy']]%>
+  
+  <%= f.submit 'Cadastrar' %>
+<% end %>
