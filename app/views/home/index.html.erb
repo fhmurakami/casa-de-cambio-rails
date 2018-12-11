@@ -1,1 +1,19 @@
 <h1>Bem-vindo ao sistema de trocas de moedas</h1>
+
+<% if @transactions.length == 0 %>
+  <p>Você ainda não possui transações cadastradas</p>
+<% end %>
+
+<% @transactions.each do |transaction| %>
+  <p>Identificador</p>
+  <%= transaction.id %>
+  <p>Quantidade</p>
+  <%= transaction.amount %>
+  <p>Moeda</p>
+  <%= transaction.translate(transaction.currency) %>
+  <p>Tipo</p>
+  <%= transaction.translate(transaction.transaction_type) %>
+  <p>Total</p>
+  <%="$ #{transaction.total(transaction)}"%>
+  
+<% end %>
