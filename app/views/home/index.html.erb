@@ -5,15 +5,14 @@
 <% end %>
 
 <% @transactions.each do |transaction| %>
-  <p>Identificador</p>
-  <%= transaction.id %>
-  <p>Quantidade</p>
-  <%= transaction.amount %>
-  <p>Moeda</p>
-  <%= transaction.translate(transaction.currency) %>
-  <p>Tipo</p>
-  <%= transaction.translate(transaction.transaction_type) %>
-  <p>Total</p>
-  <%="$ #{transaction.total(transaction)}"%>
-  
+  <h3>Identificador</h3>
+  <p><%= link_to "#{transaction.id}", transaction_path(transaction) %></p>
+  <h3>Quantidade</h3>
+  <p><%= transaction.amount %></p>
+  <h3>Moeda</h3>
+  <p><%= transaction.translate(transaction.currency) %></p>
+  <h3>Tipo</h3>
+  <p><%= transaction.translate(transaction.transaction_type) %></p>
+  <h3>Total</h3>
+  <p><%="$ #{transaction.total(transaction)}"%></p>
 <% end %>

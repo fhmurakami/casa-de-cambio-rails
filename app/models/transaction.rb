@@ -22,4 +22,8 @@ class Transaction < ApplicationRecord
   def convert_to_dollar(real_amount, quotation)
     real_amount / quotation
   end
+
+  def created_at
+    DateTime.now
+  end
 end
