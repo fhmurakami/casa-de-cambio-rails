@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   get '/transactions/new', to: 'transactions#new'
   get '/transactions/:id', to: 'transactions#show'
   resources :transactions
+  post '/transactions/new'
+  patch '/transactions/:id/edit', to: 'transactions#update'
 end

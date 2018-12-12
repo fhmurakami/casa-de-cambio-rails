@@ -1,4 +1,4 @@
-<%= form_for Transaction.new do |f| %>
+<%= form_for @transaction, :url => {:action => :new} do |f| %>
   <%= f.label :amount, 'Quantidade' %>
   <%= f.text_field :amount %>
   <%= f.label :currency, 'Moeda' %>
