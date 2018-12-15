@@ -13,3 +13,136 @@
  *= require_tree .
  *= require_self
  */
+ @import url('https://fonts.googleapis.com/css?family=Roboto');
+
+ body {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+div.transaction {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+div.transaction.details {
+    width: 260px;
+    margin: 20px auto 0px;
+}
+
+div.transaction h3, div.transaction p {
+    width: 105px;
+    height: 20px;;
+    text-align: center;
+    border: 1px solid #000;
+    padding: 10px;
+    margin: 0px;
+}
+
+div.button_group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    color:#08233e;
+    text-decoration: none;
+    font-size: 1em;
+    font-family: 'Roboto';
+    padding:14px;
+    background: #ffcc00;background-color:rgba(255,204,0,1);
+    border:1px solid #ffcc00;
+    -moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;
+    border-bottom:1px solid #9f9f9f;
+    -moz-box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);-webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);
+    cursor:pointer;
+}
+
+.button:hover {
+    background-color:rgba(255,204,0,0.8);
+}
+
+a.button {
+    margin: 20px;
+}
+
+.btn_edit {
+    color: #FFF;
+    background-color: rgba(49, 160, 15, 1);
+}
+
+.btn_edit:hover {
+    background-color:rgba(49, 160, 15, 0.8);
+}
+
+.btn_delete {
+    color: #FFF;
+    background-color: rgba(255, 51, 0, 1);
+}
+
+.btn_delete:hover {
+    background-color:rgba(255, 51, 0, 0.8);
+}
+
+.btn_back {
+    color: #FFF;
+    background-color: rgba(0, 110, 190, 1);
+}
+
+.btn_back:hover {
+    background-color: rgba(0, 110, 190, 0.8);
+}
+
+form.new_transaction, form.edit_transaction {
+    margin: 30px auto;
+    width: 240px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+form.new_transaction label, form.new_transaction input, form.new_transaction select,
+form.edit_transaction label, form.edit_transaction input, form.edit_transaction select {
+    margin-bottom: 10px;
+}
+
+form.new_transaction input.btn_submit, form.edit_transaction input.btn_submit,
+form.new_transaction .btn_cancel, form.edit_transaction .btn_cancel {
+    margin: 0;
+    margin-top: 10px
+}
+
+.btn_submit {
+    color: #FFF;
+    background-color: rgba(49, 160, 15, 1);
+}
+
+.btn_submit:hover {
+    background-color:rgba(49, 160, 15, 0.8);
+}
+
+.btn_cancel {
+    color: #FFF;
+    background-color: rgba(255, 51, 0, 1);
+}
+
+.btn_cancel:hover {
+    background-color: rgba(255, 51, 0, 0.8);
+}
+
+div.alert {
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 51, 0, 0.4);
+    border-radius: 5px;
+}

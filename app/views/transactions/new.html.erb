@@ -1,12 +1,13 @@
 <%= form_for @transaction, :url => {:action => :new} do |f| %>
   <%= f.label :amount, 'Quantidade' %>
   <%= f.text_field :amount %>
-  <%= f.label :currency, 'Moeda' %>
-  <%= f.select :currency, [['Dólar', 'dollar'], ['Real', 'real']] %>
   <%= f.label :quotation, 'Cotação' %>
   <%= f.text_field :quotation %>
+  <%= f.label :currency, 'Moeda' %>
+  <%= f.select :currency, [['Dólar', 'dollar'], ['Real', 'real']] %>
   <%= f.label :transaction_type, 'Tipo' %>
   <%= f.select :transaction_type, [['Venda', 'sell'],['Compra', 'buy']]%>
   
-  <%= f.submit 'Cadastrar' %>
+  <%= f.submit 'Cadastrar', class: "button btn_submit" %>
+  <%= link_to 'Cancelar', root_path, class: "button btn_cancel" %>
 <% end %>

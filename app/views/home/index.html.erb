@@ -1,20 +1,29 @@
 <h1>Bem-vindo ao sistema de trocas de moedas</h1>
 
 <% if @transactions.length == 0 %>
-  <p>Você ainda não possui transações cadastradas</p>
+  <div class="alert">
+    <p>Você ainda não possui transações cadastradas</p>
+  </div>
 <% end %>
+
+ <div class="transaction">
+  <h3>Identificador</h3>
+  <h3>Quantidade</h3>
+  <h3>Moeda</h3>
+  <h3>Tipo</h3>
+  <h3>Total</h3>
+</div>
 
 <% @transactions.each do |transaction| %>
-  <h3>Identificador</h3>
-  <p><%= link_to "#{transaction.id}", transaction_path(transaction) %></p>
-  <h3>Quantidade</h3>
-  <p><%= transaction.amount %></p>
-  <h3>Moeda</h3>
-  <p><%= transaction.translate(transaction.currency) %></p>
-  <h3>Tipo</h3>
-  <p><%= transaction.translate(transaction.transaction_type) %></p>
-  <h3>Total</h3>
-  <p><%="$ #{transaction.total(transaction)}"%></p>
+  <div class="transaction">
+    <p><%= link_to "#{transaction.id}", transaction_path(transaction) %></p>
+    <p><%= transaction.amount %></p>
+    <p><%= transaction.translate(transaction.currency) %></p>
+    <p><%= transaction.translate(transaction.transaction_type) %></p>
+    <p><%="$ #{transaction.total(transaction)}"%></p>
+  </div>
 <% end %>
 
-<%= link_to 'Registrar transação', new_transaction_path() %>
+<div class="button_group">
+  <%= link_to 'Registrar transação', new_transaction_path(), class: "button" %>
+</div>
