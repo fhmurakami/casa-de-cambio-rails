@@ -44,7 +44,7 @@ class TransactionsController < ApplicationController
     transaction = Transaction.find(params[:id])
     transaction.destroy
     redirect_to root_path
-    flash.now[:alert] = 'Transação apagada com sucesso!'
+    flash[:alert] = 'Transação apagada com sucesso!'
   end
 
   private
