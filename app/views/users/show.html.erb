@@ -4,3 +4,7 @@
 <p><%= @user.email %></p>
 <h5>CPF</h5>
 <p><%= @user.cpf %></p>
+
+<div class="button_group">
+    <%= link_to 'Editar', edit_user_path(@user), class: "button btn_edit" %>    
+</div>

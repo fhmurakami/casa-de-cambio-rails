@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   post '/transactions/new'
   patch '/transactions/:id/edit', to: 'transactions#update'
   post '/users/new'
-  post '/users/:id/edit', to: 'users#update'
+  patch '/users/:id/edit', to: 'users#update'
 end
