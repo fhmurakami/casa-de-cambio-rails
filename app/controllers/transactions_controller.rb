@@ -3,6 +3,7 @@ class TransactionsController < ApplicationController
     return create if transaction_params
 
     @transaction = Transaction.new
+    @users = User.all
   end
 
   def create
@@ -10,6 +11,7 @@ class TransactionsController < ApplicationController
     if @transaction.save
       redirect_to @transaction
     else
+      @users = User.all
       flash.now[:alert] = 'Você deve informar todos os dados da transação'
       render :new
     end
@@ -23,6 +25,7 @@ class TransactionsController < ApplicationController
     return update if transaction_params
 
     @transaction = Transaction.find(params[:id])
+    @users = User.all
   end
 
   def update
@@ -31,6 +34,7 @@ class TransactionsController < ApplicationController
     if @transaction.save
       redirect_to @transaction
     else
+      @users = User.all
       flash.now[:alert] = 'Você deve informar todos os dados da transação'
       render :edit
     end
@@ -43,9 +47,11 @@ class TransactionsController < ApplicationController
     flash.now[:alert] = 'Transação apagada com sucesso!'
   end
 
+  private
+
   def transaction_params
     return false if params[:transaction].nil? || params[:transaction].empty?
 
-    params.require(:transaction).permit(:amount, :currency, :quotation, :transaction_type)
+    params.require(:transaction).permit(:amount, :currency, :quotation, :transaction_type, :user_id)
   end
 end
