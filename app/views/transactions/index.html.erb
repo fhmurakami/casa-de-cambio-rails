@@ -12,7 +12,7 @@
     <p><%= transaction.amount %></p>
     <p><%= transaction.translate(transaction.currency) %></p>
     <p><%= transaction.translate(transaction.transaction_type) %></p>
-    <p><%="$ #{transaction.total(transaction)}"%></p>
+    <p><%="$ #{format('%.2f', transaction.total(transaction))}"%></p>
   </div>
 <% end %>
 

@@ -4,6 +4,8 @@ class Transaction < ApplicationRecord
   validates :amount, :currency, :quotation,
             :transaction_type, presence: true
 
+  sum = 0
+
   def translate(word)
     return 'Dólar' if word == 'dollar'
     return 'Real' if word == 'real'
@@ -14,14 +16,14 @@ class Transaction < ApplicationRecord
 
   def total(transaction)
     if transaction.currency == 'dollar'
-      return format('%.2f', -transaction.amount) if transaction.transaction_type == 'sell'
+      return -transaction.amount if transaction.transaction_type == 'sell'
 
-      format('%.2f', transaction.amount)
+      transaction.amount
     else
       dollar_amount = convert_to_dollar(transaction.amount, transaction.quotation)
-      return format('%.2f', -dollar_amount) if transaction.transaction_type == 'sell'
+      return -dollar_amount if transaction.transaction_type == 'sell'
 
-      format('%.2f', dollar_amount)
+      dollar_amount
     end
   end
 

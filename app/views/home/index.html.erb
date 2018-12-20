@@ -17,6 +17,7 @@
     <h3>Moeda</h3>
     <h3>Tipo</h3>
     <h3>Total</h3>
+    <h3>Total agregado</h3>
   </div>
 
   <% @transactions.each do |transaction| %>
@@ -25,9 +26,13 @@
       <p><%= transaction.amount %></p>
       <p><%= transaction.translate(transaction.currency) %></p>
       <p><%= transaction.translate(transaction.transaction_type) %></p>
-      <p><%="$ #{transaction.total(transaction)}"%></p>
+      <p><%="$ #{format('%.2f', transaction.total(transaction))}" %></p>
+      
     </div>
   <% end %>
+    <div class="transaction">
+      <p><%= "$ #{format('%.2f', @sum)}" %></p>
+    </div>
 <% end %>
 
   <div class="button_group">

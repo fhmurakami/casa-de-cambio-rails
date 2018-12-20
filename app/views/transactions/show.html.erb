@@ -14,7 +14,7 @@
     <h3>Data</h3>
     <p><%= @transaction.created_at.strftime('%d/%m/%Y') %></p>
     <h3>Total</h3>
-    <p><%="$ #{@transaction.total(@transaction)}"%></p>
+    <p><%="$ #{format('%.2f', @transaction.total(@transaction))}"%></p>
 </div>
 
 <div class="button_group">
