@@ -1,9 +1,15 @@
 <h1>Bem-vindo ao sistema de trocas de moedas</h1>
 
+  <%= form_tag "/", method: "get" do %>
+    <%= label_tag(:currency, 'Filtro por moeda') %>
+    <%= select_tag :currency, options_for_select([['Dólar', 'dollar'], ['Real', 'real']]) %>
+    <%= submit_tag "Filtrar" %>
+  <% end %>
 <% if @transactions.empty? %>
   <div class="alert">
     <p>Você ainda não possui transações cadastradas</p>
   </div>
+
 <% else %>
   <div class="transaction">
     <h3>Identificador</h3>

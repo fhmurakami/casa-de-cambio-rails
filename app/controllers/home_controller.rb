@@ -1,6 +1,10 @@
 class HomeController < ApplicationController
   def index
-    @transactions = Transaction.all
+    if params[:currency]
+      @transactions = Transaction.where(currency: params[:currency])
+    else
+      @transactions = Transaction.all
+    end
     @users = User.all
   end
 end
