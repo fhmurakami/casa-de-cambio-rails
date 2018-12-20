@@ -23,11 +23,23 @@ h1 {
     text-align: center;
 }
 
+div.filter {
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
 div.transaction {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+}
+
+div.transaction#total {
+    margin: 30px;
 }
 
 div.transaction.details {
@@ -36,8 +48,7 @@ div.transaction.details {
 }
 
 div.transaction h3, div.transaction p {
-    width: 105px;
-    height: 20px;;
+    width: 150px;;
     text-align: center;
     border: 1px solid #000;
     padding: 10px;
@@ -102,7 +113,16 @@ a.button {
 
 form.new_transaction, form.edit_transaction {
     margin: 30px auto;
-    width: 240px;
+    width: 290px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+form.new_user, form.edit_user {
+    margin: 30px auto;
+    width: 250px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -110,12 +130,17 @@ form.new_transaction, form.edit_transaction {
 }
 
 form.new_transaction label, form.new_transaction input, form.new_transaction select,
-form.edit_transaction label, form.edit_transaction input, form.edit_transaction select {
+form.edit_transaction label, form.edit_transaction input, form.edit_transaction select,
+form.new_user label, form.new_user input, form.new_user select,
+form.edit_user label, form.edit_user input, form.edit_user select {
     margin-bottom: 10px;
+    margin-right: 10px;
 }
 
 form.new_transaction input.btn_submit, form.edit_transaction input.btn_submit,
-form.new_transaction .btn_cancel, form.edit_transaction .btn_cancel {
+form.new_transaction .btn_cancel, form.edit_transaction .btn_cancel,
+form.new_user input.btn_submit, form.edit_user input.btn_submit,
+form.new_user .btn_cancel, form.edit_user .btn_cancel {
     margin: 0;
     margin-top: 10px
 }

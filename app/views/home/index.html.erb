@@ -1,10 +1,12 @@
 <h1>Bem-vindo ao sistema de trocas de moedas</h1>
 
+<div class="filter">
   <%= form_tag "/", method: "get" do %>
     <%= label_tag(:currency, 'Filtro por moeda') %>
     <%= select_tag :currency, options_for_select([['Dólar', 'dollar'], ['Real', 'real']]) %>
     <%= submit_tag "Filtrar" %>
   <% end %>
+</div>
 <% if @transactions.empty? %>
   <div class="alert">
     <p>Você ainda não possui transações cadastradas.</p>
@@ -17,7 +19,6 @@
     <h3>Moeda</h3>
     <h3>Tipo</h3>
     <h3>Total</h3>
-    <h3>Total agregado</h3>
   </div>
 
   <% @transactions.each do |transaction| %>
@@ -30,7 +31,8 @@
       
     </div>
   <% end %>
-    <div class="transaction">
+    <div id="total" class="transaction">
+      <h3>Total agregado</h3>
       <p><%= "$ #{format('%.2f', @sum)}" %></p>
     </div>
 <% end %>
