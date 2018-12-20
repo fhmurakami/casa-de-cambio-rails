@@ -4,7 +4,17 @@
 <p><%= @user.email %></p>
 <h5>CPF</h5>
 <p><%= @user.cpf %></p>
+<h5>Endereço</h5>
+<% if @user.address.nil? %>
+  <p>Este usuário não tem um endereço cadastrado</p>
+<% else %>
+  <p><%= @user.address.street %></p>
+  <p><%= @user.address.neighbourhood %></p>
+  <p><%= "#{@user.address.city} - #{@user.address.state}" %></p>
+  <p><%= @user.address.postal_code %></p>
+<% end %>
 
 <div class="button_group">
-    <%= link_to 'Editar', edit_user_path(@user), class: "button btn_edit" %>    
+  <%= link_to 'Editar', edit_user_path(@user), class: "button btn_edit" %>
+  <%= link_to 'Voltar', root_path, class: "button btn_back" %>
 </div>

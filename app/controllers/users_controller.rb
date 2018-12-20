@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
+    @addresses = Address.all
   end
 
   def new
     return create if user_params
 
     @user = User.new
+    @addresses = Address.all
   end
 
   def create
@@ -14,6 +16,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to @user
     else
+      @addresses = Address.all
       flash.now[:alert] = 'Você deve informar todos os dados do usuário'
       render :new
     end
@@ -27,6 +30,7 @@ class UsersController < ApplicationController
     return update if user_params
 
     @user = User.find(params[:id])
+    @addresses = Address.all
   end
 
   def update
@@ -35,6 +39,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to @user
     else
+      @addresses = Address.all
       flash.now[:alert] = 'Você deve informar todos os dados do usuário'
       render :edit
     end
@@ -45,6 +50,6 @@ class UsersController < ApplicationController
   def user_params
     return false if params[:user].nil? || params[:user].empty?
 
-    params.require(:user).permit(:name, :email, :cpf)
+    params.require(:user).permit(:name, :email, :cpf, :address_id)
   end
 end
