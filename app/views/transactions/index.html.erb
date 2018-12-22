@@ -1,21 +1,32 @@
-<div class="transaction">
-  <h3>Identificador</h3>
-  <h3>Quantidade</h3>
-  <h3>Moeda</h3>
-  <h3>Tipo</h3>
-  <h3>Total</h3>
-</div>
+<ul class="ls-tabs-nav">
+  <li><%= link_to 'Transações do dia', root_path %></li>
+  <li class="ls-active"><%= link_to 'Ver todas', transactions_path %></li>
+</ul>
 
-<% @transactions.each do |transaction| %>
-  <div class="transaction">
-    <p><%= link_to "#{transaction.id}", transaction_path(transaction) %></p>
-    <p><%= transaction.amount %></p>
-    <p><%= transaction.translate(transaction.currency) %></p>
-    <p><%= transaction.translate(transaction.transaction_type) %></p>
-    <p><%="$ #{format('%.2f', transaction.total(transaction))}"%></p>
+<div class="ls-tabs-container">
+  <div id="today" class="ls-tab-content ls-active">
+    <table class="ls-table ls-no-hover ls-table-striped ls-bg-header">
+      <thead>
+        <tr>
+          <th>Identificador</th>
+          <th>Quantidade</th>
+          <th>Moeda</th>
+          <th>Tipo</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @transactions.each do |transaction| %>
+          <tr>
+            <td><%= link_to "#{transaction.id}", transaction_path(transaction) %></td>
+            <td><%= transaction.amount %></td>
+            <td><%= transaction.translate(transaction.currency) %></td>
+            <td><%= transaction.translate(transaction.transaction_type) %></td>
+            <td><%="$ #{format('%.2f', transaction.total(transaction))}" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
   </div>
-<% end %>
-
-<div class="button_group">
-  <%= link_to 'Voltar', root_path, class: "button btn_back" %>
 </div>

@@ -1,20 +1,30 @@
 <h3><%= @user.name %></h3>
-
-<h5>E-mail</h5>
-<p><%= @user.email %></p>
-<h5>CPF</h5>
-<p><%= @user.cpf %></p>
-<h5>Endereço</h5>
-<% if @user.address.nil? %>
-  <p>Este usuário não tem um endereço cadastrado</p>
-<% else %>
-  <p><%= @user.address.street %></p>
-  <p><%= @user.address.neighbourhood %></p>
-  <p><%= "#{@user.address.city} - #{@user.address.state}" %></p>
-  <p><%= @user.address.postal_code %></p>
-<% end %>
+<table class="ls-table ls-no-hover ls-table-striped ls-bg-header">
+  <thead>
+    <tr>
+      <th>E-mail</th>
+      <th>CPF</th>
+      <th>Endereço</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @user.email %></td>
+      <td><%= @user.cpf %></td>
+      <% if @user.address.nil? %>
+        <td>Este usuário não tem um endereço cadastrado</td>
+      <% else %>
+        <td><%= @user.address.street %></td>
+        <td><%= @user.address.neighbourhood %></td>
+        <td><%= "#{@user.address.city} - #{@user.address.state}" %></td>
+        <td><%= @user.address.postal_code %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
 
 <div class="button_group">
-  <%= link_to 'Editar', edit_user_path(@user), class: "button btn_edit" %>
-  <%= link_to 'Voltar', root_path, class: "button btn_back" %>
+  <%= link_to 'Editar', edit_user_path(@user), class: "ls-btn-primary ls-ico-pencil2" %>
+  <%= link_to 'Apagar', user_path(@user), method: :delete,
+        data: {confirm: 'Quer apagar este usuário?'}, class: "ls-btn-primary-danger ls-ico-remove" %>
 </div>

@@ -1,15 +1,39 @@
-<%= form_for @transaction, :url => {:action => :new} do |f| %>
-  <%= f.label :amount, 'Quantidade' %>
-  <%= f.text_field :amount %>
-  <%= f.label :quotation, 'Cotação' %>
-  <%= f.text_field :quotation %>
-  <%= f.label :currency, 'Moeda' %>
-  <%= f.select :currency, [['Dólar', 'dollar'], ['Real', 'real']] %>
-  <%= f.label :transaction_type, 'Tipo' %>
-  <%= f.select :transaction_type, [['Venda', 'sell'],['Compra', 'buy']]%>
-  <%= f.label :user_id, 'Usuário' %>
-  <%= f.collection_select(:user_id, @users,:id, :email) %>
-  
-  <%= f.submit 'Cadastrar', class: "button btn_submit" %>
-  <%= link_to 'Cancelar', root_path, class: "button btn_cancel" %>
-<% end %>
+<form action="" class="ls-form ls-form-inline row">
+  <%= form_for @transaction, :url => {:action => :new} do |f| %>
+    <fieldset>
+      <label class="ls-label col-md-4">
+        <b class="ls-label-text"><%= f.label :amount, 'Quantidade' %></b>
+        <%= f.text_field :amount %>
+      </label>
+      <label class="ls-label col-md-4">
+        <b class="ls-label-text"><%= f.label :quotation, 'Cotação' %></b>
+        <%= f.text_field :quotation %>
+      </label>
+    </fieldset>
+    <fieldset>
+      <label class="ls-label col-md-2">
+        <b class="ls-label-text"><%= f.label :currency, 'Moeda' %></b>
+        <div class="ls-custom-select">
+          <%= f.select :currency, [['Dólar', 'dollar'], ['Real', 'real']], class: "ls-select" %>
+        </div>
+      </label>
+      <label class="ls-label col-md-3">
+        <b class="ls-label-text"><%= f.label :transaction_type, 'Tipo' %></b>
+        <div class="ls-custom-select">
+          <%= f.select :transaction_type, [['Venda', 'sell'],['Compra', 'buy']], class: "ls-select" %>
+        </div>
+      </label>
+      <label class="ls-label col-md-3">
+        <b class="ls-label-text"><%= f.label :user_id, 'Usuário' %></b>
+        <div class="ls-custom-select">
+          <%= f.collection_select(:user_id, @users,:id, :email) %>
+        </div>
+      </label>
+    </fieldset>
+    
+    <div class="ls-actions-btn">
+      <%= f.submit 'Cadastrar', class: "ls-btn-primary ls-ico-checkmark" %>
+      <%= link_to 'Cancelar', root_path, class: "ls-btn-primary-danger" %>
+    </div>
+  <% end %>
+</form>

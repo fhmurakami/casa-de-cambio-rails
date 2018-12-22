@@ -1,23 +1,26 @@
-<h1>Bem-vindo ao sistema de trocas de moedas</h1>
-
 <% if @users.empty? %>
   <div class="alert">
     <p>Nenhum usuário cadastrado</p>
   </div>
 <% else %>
-  <div class="transaction">
-    <h3>Identificador</h3>
-    <h3>Nome</h3>
-    <h3>E-mail</h3>
-    <h3>CPF</h3>
-  </div>
-
-  <% @users.each do |user| %>
-    <div class="transaction">
-      <p><%= link_to user.id, user_path(user) %></p>
-      <p><%= user.name %></p>
-      <p><%= user.email %></p>
-      <p><%= user.cpf %></p>
-    </div>
-  <% end %>
+  <table class="ls-table ls-no-hover ls-table-striped ls-bg-header">
+    <thead>
+      <tr>
+        <th>Identificador</th>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>CPF</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.id, user_path(user) %></td>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.cpf %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>

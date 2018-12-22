@@ -1,25 +1,33 @@
-<div class="transaction details">
-    <h3>Identificador</h3>
-    <p><%= @transaction.id %></p>
-    <h3>Usuário</h3>
-    <p><%= @transaction.user.email %></p>
-    <h3>Quantidade</h3>
-    <p><%= @transaction.amount %></p>
-    <h3>Moeda</h3>
-    <p><%= @transaction.translate(@transaction.currency) %></p>
-    <h3>Cotação</h3>
-    <p><%="$ #{@transaction.quotation}"%></p>
-    <h3>Tipo</h3>
-    <p><%= @transaction.translate(@transaction.transaction_type) %></p>
-    <h3>Data</h3>
-    <p><%= @transaction.created_at.strftime('%d/%m/%Y') %></p>
-    <h3>Total</h3>
-    <p><%="$ #{format('%.2f', @transaction.total(@transaction))}"%></p>
-</div>
+<table class="ls-table ls-no-hover ls-table-striped ls-bg-header">
+  <thead>
+    <tr>
+      <th><h3>Identificador</h3></th>
+      <th><h3>Usuário</h3></th>
+      <th><h3>Quantidade</h3></th>
+      <th><h3>Moeda</h3></th>
+      <th><h3>Cotação</h3></th>
+      <th><h3>Tipo</h3></th>
+      <th><h3>Data</h3></th>
+      <th><h3>Total</h3></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><p><%= @transaction.id %></p></td>
+      <td><p><%= @transaction.user.email %></p></td>
+      <td><p><%= @transaction.amount %></p></td>
+      <td><p><%= @transaction.translate(@transaction.currency) %></p></td>
+      <td><p><%="$ #{@transaction.quotation}"%></p></td>
+      <td><p><%= @transaction.translate(@transaction.transaction_type) %></p></td>
+      <td><p><%= @transaction.created_at.strftime('%d/%m/%Y') %></p></td>
+      <td><p><%="$ #{format('%.2f', @transaction.total(@transaction))}"%></p></td>
+    </tr>
+  </tbody>
+</table>
 
 <div class="button_group">
-    <%= link_to 'Editar', edit_transaction_path(@transaction), class: "button btn_edit" %>
+    <%= link_to 'Editar', edit_transaction_path(@transaction), class: "ls-btn-primary ls-ico-pencil2" %>
+    <%= link_to 'Voltar', root_path, class: "ls-btn-dark ls-ico-chevron-left" %>
     <%= link_to 'Apagar', transaction_path(@transaction), method: :delete,
-        data: {confirm: 'Quer apagar esta transação?'}, class: "button btn_delete" %>
-    <%= link_to 'Voltar', root_path, class: "button btn_back" %>
+        data: {confirm: 'Quer apagar esta transação?'}, class: "ls-btn-primary-danger ls-ico-remove" %>
 </div>

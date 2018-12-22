@@ -1,46 +1,63 @@
-<h1>Bem-vindo ao sistema de trocas de moedas</h1>
+<ul class="ls-tabs-nav">
+  <li class="ls-active"><%= link_to 'Transações do dia', root_path %></li>
+  <li><%= link_to 'Ver todas', transactions_path %></li>
+</ul>
+<div class="ls-tabs-container">
+  <div id="today" class="ls-tab-content ls-active">
 
-<div class="filter">
-  <%= form_tag "/", method: "get" do %>
-    <%= label_tag(:currency, 'Filtro por moeda') %>
-    <%= select_tag :currency, options_for_select([['Dólar', 'dollar'], ['Real', 'real']]) %>
-    <%= submit_tag "Filtrar" %>
-  <% end %>
-</div>
-<% if @transactions.empty? %>
-  <div class="alert">
-    <p>Você ainda não possui transações cadastradas.</p>
-  </div>
-
-<% else %>
-  <div class="transaction">
-    <h3>Identificador</h3>
-    <h3>Quantidade</h3>
-    <h3>Moeda</h3>
-    <h3>Tipo</h3>
-    <h3>Total</h3>
-  </div>
-
-  <% @transactions.each do |transaction| %>
-    <div class="transaction">
-      <p><%= link_to "#{transaction.id}", transaction_path(transaction) %></p>
-      <p><%= transaction.amount %></p>
-      <p><%= transaction.translate(transaction.currency) %></p>
-      <p><%= transaction.translate(transaction.transaction_type) %></p>
-      <p><%="$ #{format('%.2f', transaction.total(transaction))}" %></p>
+    <div class="ls-box-filter">
+      <form action="" class="ls-form ls-form-inline ls-float-left">
+        <label class="ls-label col-md-8 col-sm-8">
+          <%= form_tag "/", method: "get" do %>
+            <b class="ls-label-text"><%= label_tag(:currency, 'Filtro por moeda') %></b>
+            <div class="ls-custom-select">
+              <%= select_tag :currency, options_for_select([['Dólar', 'dollar'], ['Real', 'real']]), class: "ls-select" %>
+            </div>
+        </label>
       
+        <div class="ls-actions-btn ls-float-right">
+          <%= submit_tag "Filtrar", class: "ls-btn-primary" %>
+        </div>
+          <% end %>
+      </form>
     </div>
-  <% end %>
-    <div id="total" class="transaction">
-      <h3>Total agregado</h3>
-      <p><%= "$ #{format('%.2f', @sum)}" %></p>
-    </div>
-<% end %>
+    
+    <% if @transactions.empty? %>
+      <div class="ls-alert-danger">
+        Você ainda não possui transações cadastradas.
+      </div>
 
-  <div class="button_group">
-    <%= link_to 'Ver todas', transactions_path(), class: "button" %>
-    <%= link_to 'Usuários', users_path(), class: "button" %>
+    <% else %>
+      <table class="ls-table ls-no-hover ls-table-striped ls-bg-header">
+        <thead>
+          <tr>
+            <th>Identificador</th>
+            <th>Quantidade</th>
+            <th>Moeda</th>
+            <th>Tipo</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @transactions.each do |transaction| %>
+            <tr>
+              <td><%= link_to "#{transaction.id}", transaction_path(transaction) %></td>
+              <td><%= transaction.amount %></td>
+              <td><%= transaction.translate(transaction.currency) %></td>
+              <td><%= transaction.translate(transaction.transaction_type) %></td>
+              <td><%="$ #{format('%.2f', transaction.total(transaction))}" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4"><b>Total agregado</b></td>
+            <td><%= "$ #{format('%.2f', @sum)}" %></td>
+          </tr>
+        </tfoot>
+      </table>
 
-    <%= link_to 'Registrar transação', new_transaction_path(), class: "button" %>
-    <%= link_to 'Cadastrar usuário', new_user_path(), class: "button" %>
+    <% end %>
+
   </div>
+</div>
