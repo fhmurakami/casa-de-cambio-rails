@@ -1,0 +1,31 @@
+<form action="" class="ls-form ls-form-inline row">
+  <%= form_for @address, :url => {:action => :edit} do |f| %>
+    <fieldset>
+      <label class="ls-label col-md-12">
+        <b class="ls-label-text"><%= f.label :street, 'Logradouro' %></b>
+        <%= f.text_field :street %>
+      </label>
+      <label class="ls-label col-md-6">
+        <b class="ls-label-text"><%= f.label :city, 'Cidade' %></b>
+        <%= f.text_field :city %>
+      </label>
+      <label class="ls-label col-md-6">
+        <b class="ls-label-text"><%= f.label :state, 'Estado' %></b>
+        <%= f.text_field :state %>
+      </label>
+      <label class="ls-label col-md-6">
+        <b class="ls-label-text"><%= f.label :neighbourhood, 'Bairro' %></b>
+        <%= f.text_field :neighbourhood %>
+      </label>
+      <label class="ls-label col-md-6">
+        <b class="ls-label-text"><%= f.label :postal_code, 'CEP' %></b>
+        <%= f.text_field :postal_code %>
+      </label>
+    </fieldset>
+    
+    <div class="ls-actions-btn">
+      <%= f.submit 'Editar', class: "ls-btn-primary ls-ico-checkmark" %>
+      <%= link_to 'Cancelar', root_path, class: "ls-btn-primary-danger" %>
+    </div>
+  <% end %>
+</form>

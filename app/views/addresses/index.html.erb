@@ -1,0 +1,29 @@
+<% if @addresses.empty? %>
+  <div class="ls-alert-danger">
+    Você ainda não possui endereços cadastrados.
+  </div>
+
+<% else %>
+  <table class="ls-table ls-no-hover ls-table-striped ls-bg-header">
+    <thead>
+      <tr>
+        <th>Identificador</th>
+        <th>Logradouro</th>
+        <th>Cidade - Estado</th>
+        <th>Bairro</th>
+        <th>CEP</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @addresses.each do |address|%>
+        <tr>
+          <td><%= link_to address.id, address_path(address) %></td>
+          <td><%= address.street %></td>
+          <td><%= address.neighbourhood %></td>
+          <td><%= "#{address.city} - #{address.state}" %></td>
+          <td><%= address.postal_code %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

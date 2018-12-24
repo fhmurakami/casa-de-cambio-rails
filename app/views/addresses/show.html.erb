@@ -1,0 +1,24 @@
+<table class="ls-table ls-no-hover ls-table-striped ls-bg-header">
+  <thead>
+    <tr>
+      <th>Logradouro</th>
+      <th>Cidade - Estado</th>
+      <th>Bairro</th>
+      <th>CEP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @address.street %></td>
+      <td><%= @address.neighbourhood %></td>
+      <td><%= "#{@address.city} - #{@address.state}" %></td>
+      <td><%= @address.postal_code %></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="button_group">
+  <%= link_to 'Editar', edit_address_path(@address), class: "ls-btn-primary ls-ico-pencil2" %>
+  <%= link_to 'Apagar', address_path(@address), method: :delete,
+        data: {confirm: 'Quer apagar este endereço?'}, class: "ls-btn-primary-danger ls-ico-remove" %>
+</div>
